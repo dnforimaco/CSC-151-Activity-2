@@ -1,4 +1,4 @@
-from Tkinter import *
+from tkinter import *
 import sqlite3
 
 class Student (object):
@@ -12,7 +12,7 @@ class Student (object):
 
 
 def open_db():
-	
+
 
 	def go_to_update():
 		def update_dis():
@@ -85,14 +85,14 @@ def open_db():
 		upd_but = Button(upd_win,text="Search",width=10, height=1,command= update_dis).place(x=215,y=3)
 
 
-	
+
 
 	db_name = str(d_tubies.get())+'.db'
 	conn = sqlite3.connect(db_name)
 	quer = conn.cursor()
 	quer.execute('''CREATE TABLE IF NOT EXISTS studentRecord
 	(FirstName TEXT, MiddleInitial TEXT, LastName TEXT, ID TEXT, Course TEXT)''')
-	print db_name + " successfily created"
+	print(db_name + " successfily created")
 
 	def go_to_add():
 
@@ -102,13 +102,13 @@ def open_db():
 			st_mi = str(mi.get())
 			st_fname = str(fname.get())
 			st_course = str(Crs.get())
-			
+
 			stud = Student(st_fname,st_mi,st_lname,st_ID,st_course)
 			quer.execute("INSERT INTO studentRecord (FirstName, MiddleInitial, LastName, ID, Course) VALUES (?,?,?,?,?)",
         	(stud.fname,stud.mi, stud.lname,stud.idnum,stud.course))
-   			conn.commit()
+			conn.commit()
 
-			
+
 			ID_box.delete(0, END)
 			fname_box.delete(0, END)
 			mi_box.delete(0, END)
@@ -127,7 +127,7 @@ def open_db():
 		mi_label= Label(new_win,text="Middle Initial: ").place(x=3,y=45)
 		lname_label= Label(new_win,text="Last Name: ").place(x=3,y=65)
 		course_label= Label(new_win,text="Course: ").place(x=3,y=85)
-		
+
 		ID_num = StringVar(None)
 		ID_box= Entry(new_win,textvariable=ID_num,width=25,bg="pink")
 		ID_box.place(x=90,y=5)
@@ -156,10 +156,10 @@ def open_db():
 		for row in quer.fetchall():
 
 			sep0 = "   "
-			print sep0
+			print (sep0)
 			box_all.insert(END, row[3]+sep0+row[2] + sep0 +row[0]+sep0+row[1]+sep0+row[4])
-			print row
-	
+			print (row)
+
 		box_all.place(x=9,y=200)
 		op_db.close()
 	display()
@@ -183,9 +183,9 @@ def open_db():
 	def go_to_sort():
 		quer.execute("SELECT * FROM studentRecord ORDER BY ID ASC")
 		conn.commit()
-		
-	
-	
+
+
+
 
 
 
@@ -213,4 +213,3 @@ work = Button(root,text="Enter",width=10, height=1,command=open_db).place(x=270,
 
 
 root.mainloop()
-
