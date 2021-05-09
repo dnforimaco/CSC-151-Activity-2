@@ -1,0 +1,190 @@
+Beginnings.
+In the beginning, sometime in early 1996, several people were talking on the linux-kernel mailing list about a suitable logo/mascot for Linux. Of the many, many suggestions, many involved parodies of other operating system logo's - or were strong, noble beasts such as Sharks or Eagles. At some point (I'm not sure when), Linus Torvalds (the father of Linux) casually mentioned that he was rather fond of Penguins - which rather stopped the debate in its tracks.
+After several attempts to draw Penguins in various poses, someone suggested a Penguin holding up the world. Here is the famous email from Linus - in response to Dale Scheetz' efforts to produce a such an image:
+
+Re: Linux Logo prototype.
+Linus Torvalds (torvalds@cs.helsinki.fi)
+Thu, 9 May 1996 17:48:56 +0300 (EET DST)
+Somebody had a logo competition announcement, maybe people can send their ideas to a web-site..
+
+Anyway, this one looks like the poor penguin is not really strong enough to hold up the world, and it's going to get squashed. Not a good, positive logo, in that respect..
+
+Now, when you think about penguins, first take a deep calming breath, and then think "cuddly". Take another breath, and think "cute". Go back to "cuddly" for a while (and go on breathing), then think "contented".
+
+With me so far? Good..
+
+Now, with penguins, (cuddly such), "contented" means it has either just gotten laid, or it's stuffed on herring. Take it from me, I'm an expert on penguins, those are really the only two options.
+
+Now, working on that angle, we don't really want to be associated with a randy penguin (well, we do, but it's not politic, so we won't), so we should be looking at the "stuffed to its brim with herring" angle here.
+
+So when you think "penguin", you should be imagining a slighly overweight penguin (*), sitting down after having gorged itself, and having just burped. It's sitting there with a beatific smile - the world is a good place to be when you have just eaten a few gallons of raw fish and you can feel another "burp" coming.
+
+(*) Not FAT, but you should be able to see that it's sitting down because it's really too stuffed to stand up. Think "bean bag" here.
+
+Now, if you have problems associating yourself with something that gets off by eating raw fish, think "chocolate" or something, but you get the idea.
+
+Ok, so we should be thinking of a lovable, cuddly, stuffed penguin sitting down after having gorged itself on herring. Still with me?
+
+NOW comes the hard part. With this image firmly etched on your eyeballs, you then scetch a stylizied version of it. Not a lot of detail - just a black brush-type outline (you know the effect you get with a brush where the thickness of the line varies). THAT requires talent. Give people the outline, and they should say [ sickly sweet voice, babytalk almost ]"Ooh, what a cuddly penguin, I bet he is just _stuffed_ with herring", and small children will jump up and down and scream "mommy mommy, can I have one too?".
+
+Then we can do a larger version with some more detail (maybe leaning against a globe of the world, but I don't think we really want to give any "macho penguin" image here about Atlas or anything). That more detailed version can spank billy-boy to tears for all I care, or play ice-hockey with the FreeBSD demon. But the simple, single penguin would be the logo, and the others would just be that cuddly penguin being used as an actor in some tableau.
+
+Linus
+
+Why Penguins?
+This email from Linus in response to this very question seems to explain the significance of the Penguin:
+Re: Linux Logo
+Linus Torvalds (torvalds@cs.helsinki.fi)
+Sun, 12 May 1996 09:39:19 +0300 (EET DST)
+Umm.. You don't have any gap to fill in.
+
+"Linus likes penguins". That's it. There was even a headline on it in some Linux Journal some time ago (I was bitten by a Killer Penguin in Australia - I'm not kidding). Penguins are fun.
+
+As to why use a penguin as a logo? No good reason, really. But a logo doesn't really ave to _mean_ anything - it's the association that counts. And I can think of many worse things than have linux being associated with penguins.
+
+Having a penguin as a logo also gives more freedom to people wanting to use linux-related material: instead of being firmly fixed with a specific logo (the triangle, or just "Linux 2.0" or some other abstract thing), using something like a penguin gives people the chance to make modifications that are still recognizable.
+
+So you can have a real live penguin on a CD cover, for example, and people will get the association. Or you can have a penguin that does something specific (a Penguin writing on wordperfect for the WP Linux CD, whatever - you get the idea).
+
+Compare that to a more abstract logo (like the windows logo - it's not a bad logo in itself). You can't really do anything with a logo like that. It just "is".
+
+Anyway, go to "http://www.isc.tamu.edu/~lewing/linux/" for some nice examples..
+
+Linus
+
+Well, thanks Linus - without your help, I'd be writing a video game about a triangle with "Linux 2.0" written inside it!
+
+Which Penguin?
+A contest was proposed to pick a suitable Penguin logo - but from what I can see of the email at the time, Larry Ewing's famous Penguin painting won more or less by popular acclaim. Larry is on record as having first painted Tux using GIMP (The GNU Image Manipulation Program). You can find the original image and an explanation of how Larry painted him here: "http://www.isc.tamu.edu/~lewing/linux/".
+Larry grants permission to use and/or modify the Tux image - but he requires you acknowledge him <lewing@isc.tamu.edu> and The GIMP "if someone asks".
+Tux in 3D.
+In July 1998, I started writing a 3D game for Linux - and since I needed a cute main character, Tux naturally leapt to mind. The title of the game is "A Quest for Herring."
+This 3D Tux was generated by digitizing Tux's profile from Larry Ewing's painting, that was then rotated through 360 degrees to generate a volume of revolution.
+
+The flippers and feet were hand-built and the beak is a cone which has been squashed from end-to-end and from top to bottom. The texture map also derives from Larry's original painting, but I had to fill in the background with solid black, remove the feet and turn the beak into separate texture map. Since I needed to use Tux in my 3D game, it was necessary to reduce the resolution of the image so that it would not consume too much texture memory.
+
+
+The version in the game has better feet, a head that turns, and a beak that opens and shuts. It also sits in the same pose as in Larry's painting.	 
+Why is He Called "Tux"?
+Like pretty much everyone else, I had always assumed that "Tux" is short for "Tuxedo" - Penguins look like they are wearing tuxedo's and that seems like the most reasonable explanation. However, Jacob Poon <jacob.poon@utoronto.ca> researched this and found the first known attempt at naming "The Penguin" was found on this message:
+Let's name the penguin! (was: Re: Linux 2.0 really _is_ released..)
+Henning Schmiedehausen (barnard@forge.franken.de)
+10 Jun 1996 16:18:56 +0200
+torvalds@cs.helsinki.fi (Linus Torvalds) writes:
+> Ok, I took the plunge, and Linux-2.0 is out there on the normal
+> sites. I even got the energy to write some inane announcement
+> about it on cola, so it's too late to chicken out any more.
+So it's the 'Electrified Penguin on Cola' release? ;-)
+Anyway: Congratulations for this great achievement.
+Let's start the 'We name that penguin while Linus is not around' contest.
+I vote for 'Homer' (Of course) :-)
+Ciao
+Henning
+...presumably because of the earlier comment from Albert Cahalan that Tux looks like Homer (from "The Simpsons")...which he does...sortof.
+The next reply seems to be the first use of the name "Tux":
+
+Re: Let's name the penguin! (was: Re: Linux 2.0 really _is_ released..)
+James Hughes (jamesh@interpath.com)
+Mon, 10 Jun 1996 20:25:52 -0400
+(T)orvolds (U)ni(X) --> TUX!
+...well, that kindof provides an explanation for the name - although the tuxedo connection has to be the reason behind such a tortured (and technically incorrect) acronym. There were a few other 'in-joke' names, then the thread fizzled out and the name "Tux" has stuck.
+Linnie?
+A very few Linux people call the penguin 'Linnie' - but they are a dying breed. He's obviously called Tux and that's that.
+The REAL Tux?
+Yes, there is a real, live, physical Penguin.
+A number of UK Linux fans - lead by Alan Cox - and the Linux World magazine decided to sponsor a live Penguin at Bristol Zoo as a birthday present for Linus. The following individuals contributed:
+
+
+   Phil Copeland, Alan Cox, Martin Houston, Alun Jones, Richard Hughes 
+   Alec Muffett, Andrew Pagett, Dick Porter, Chris Samuel 
+
+	You can see the letters from Bristol Zoo (in South-West England) - and some photo's of the Penguins at the Zoo.
+According to the Zoo, Tux is a Black-Footed (Jackass) Penguin - but the pictures of the Penguins at Bristol don't have the same markings as the 'classic' Tux images.
+
+Tux Makes a Difference (it's Official).
+If you are still in doubt about how 'real' Tux is, he actually won an award from "Internet World" where he was nominated as one of the twelve people "Who Made a Difference During the Year" (check out the "Internet Scrapbook" for December 14th 1998).
+Tux
+Mascot, Linux operating system
+As open source software by definition cannot be controlled by any one person, it is perhaps fitting the most recognized face in the Linux world belongs not to its creator, Linus Torvalds, but to its mascot, Tux.
+
+Why Penguins?
+Just in case you havn't already heard enough, here is Linus' explanation for why he's fond of Penguins:
+From: Linus Torvalds
+
+Ok, short version:
+I've always liked penguins, and when I was in Canberra a few years ago we went to the local zoo with Andrew Tridgell (of samba fame). There they had a ferocious penguin that bit me and infected me with a little known disease called penguinitis. Penguinitis makes you stay awake at nights just thinking about penguins and feeling great love towards them. So when Linux needed a mascot, the first thing that came into my mind was this picture of the majestic penguin, and the rest is history.
+Slightly more accurate version:
+Yes, I was bitten by a penguin, but it wasn't actually very ferocious. It was really just a pigmy penguin about 6 inches tall or something, and it was more of a timid nibble ("is this finger a see before me a small fish, or what?"). Even so, I like penguins a lot.
+
+More down-to-earth version:
+All the other logos were too boring - I wasn't looking for the "Linux Corporate Image", I was looking for something _fun_ and sympathetic to associate with Linux. A slightly fat penguin that sits down after having had a great meal fits the bill perfectly.
+
+Final comment:
+Don't take the penguin too seriously. It's supposed to be kind of goofy and fun, that's the whole point. Linux is supposed to be goofy and fun (it's also the best operating system out there, but it's goofy and fun at the same time!).
+
+Penguin Fanaticism.
+And now the world has gone nuts for Tux - his image is used in dozens of magazines, adverts, Tee-shirts - you can get cuddly-Tux plush toys in sizes from four inches to thirty six inches - and if you have $999 to spare, you can be the proud owner of a wearable Tux costume!.	
+Eric Harshbarger built this 25 inch tall Tux from Lego bricks:
+	
+Visit Eric's site for lots of other pictures of this magnificent edifice - and for Eric's other Lego projects.
+...although it's hard to beat this for Tux enthusiasm:
+From: Jim Duchek <jimduchek@ou.edu>
+...in January 1999 I decided (entirely sober even!) to get Larry Ewing's beautiful image tattooed on my upper left arm.
+
+
+There are other Tux Tattoos here.
+Controversy and Anti-Penguin Sentiment.
+When Democracy Fails...
+Reportedly there were at least three votes held on the choice of a Linux Logo. Suprisingly (in the light of subsequent events), Tux didn't win! In the largest and most final contest he polled only 541 votes compared to 785 for the winning design:
+ (Painted by Matt Ericson)
+However, Linus seems to have asserted his desires and today, there is no doubt that Tux is by far better known and more widely used than others that figured highly in the competition. To be fair (and with a nod to democracy), we should perhaps call Tux the "Linux Mascot" - and leave the term "Linux Logo" for Matt Ericsons' image.
+
+I agree with Linus' argument:
+
+"Compare that to a more abstract logo (like the windows logo - it's not a bad logo in itself). You can't really do anything with a logo like that. It just 'is'."
+It would be hard to do stuff like this with the words "Linux 2.0 Powered" in a white box:
+ 
+
+Although, to be fair, it's hard to do stuff like this with a cute penguin:
+     .-.
+     /v\    L   I   N   U   X
+    // \\  >Phear the Penguin<
+   /(   )\
+    ^^-^^
+...which was devised by David Navarro.
+                        #####        
+                       #######       
+                       #  #  #       
+                       #" #" #       
+ Linux                ##vvvvv##      
+ Rules!              ##  vvv  ##     
+                    #          ##    
+                   ##           ##   
+                   ###          ###  
+                 +++#####       ##++ 
+                ++++++#       #++++++
+                +++++++#     #+++++++
+                  +++++#######+++++  
+                    +++       +++    
+...which nobody seems to claim ownership of.
+But aren't Penguins a bit - well - feeble?
+
+There are certain Linux supporters who don't like the penguin. Yes, I know that's hard to believe. For example, Alan Mackey promoted a Fox as an alternative mascot - there were quite a few supporters of that idea - but Tux is now pretty much universally accepted and the unnamed fox is no longer a contender.
+Once again, Linus has words for these people:
+
+"Some people have told me they don't think a fat penguin really embodies the grace of Linux, which just tells me they have never seen a angry penguin charging at them in excess of 100mph. They'd be a lot more careful about what they say if they had."
+But Tux IS lean and mean.
+ 
+(OK - maybe lean is a bit of a stretch.)
+
+Ob.Links:
+Feathers McGraw?
+Several people posting to linux-kernel suggested that the Linux Penguin is rather too similar to the "Feathers McGraw" Penguin in Nick Park's Wallace and Gromit video "The Wrong Trousers" - or to the Penguin in his earlier work "Creature Comforts". Look for yourself - but I don't see much similarity.
+The LWN.net Tux Archive.
+There are several hundred more Tux pictures at the LWN.net web site:
+http://lwn.net/Gallery/.
+Other Penguins.
+There are insane numbers of Penguin fanatics out on the web, one of the better sites is this one:
+http://www.iowacity.net/bicycle/janehome.html
+Note:
+I have tried to be as exact as possible in this description of the History of Tux - but if you know better, or if you have any good Tux anecdotes that belong in this historical record, please let me know at <sjbaker1@airmail.net>
