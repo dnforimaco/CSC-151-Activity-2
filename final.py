@@ -9,7 +9,7 @@ import os
 from tapayta import run_old
 from PIL import ImageTk,Image
 from time import sleep
-import threading
+# import threading
 import random
 
 class Spawn_mini_window:
