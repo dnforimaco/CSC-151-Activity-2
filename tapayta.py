@@ -13,7 +13,6 @@ class Student (object):
 
 def run_old():
 	def open_db():
-
 		def go_to_update():
 			def update_dis():
 				def update_thing():
@@ -93,7 +92,7 @@ def run_old():
 
 
 
-		db_name = str(d_tubies.get())+'.db'
+		db_name = str(entry_box.get())+'.db'
 		conn = sqlite3.connect(db_name)
 		quer = conn.cursor()
 		quer.execute('''
@@ -183,7 +182,7 @@ def run_old():
 
 
 		def display():
-			db_name = str(d_tubies.get()) + '.db'
+			db_name = str(entry_box.get()) + '.db'
 			op_db = open(db_name,'r')
 			box_all = Listbox(root,width=57, height=15,bg="lightblue")
 			quer.execute('SELECT * FROM studentRecord')
@@ -244,8 +243,9 @@ def run_old():
 	heading = Label(root, text="Mini Record",bg="pink",font=("arial",35,"bold") , fg="steelblue").pack(fill=X)
 	file_naming= Label(root,text="Database Name: ").place(x=10,y=110)
 
-	d_tubies = StringVar()
-	entry_box = Entry(root, textvariable=d_tubies,width=25, bg="lightblue").place(x=100,y=110)
+	entry_box = Entry(root,width=25, bg="lightblue")
+	entry_box.pack(padx = 15,pady=50)
+	print(entry_box.get())
 	work = Button(root,text="Enter",width=10, height=1,command=open_db).place(x=270, y=105)
 
 	root.mainloop()
