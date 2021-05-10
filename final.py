@@ -9,8 +9,13 @@ import os
 from tapayta import run_old
 from PIL import ImageTk,Image
 from time import sleep
-# import threading
+import threading
 import random
+
+xspeed = 5
+yspeed = 5
+xspeed2 = -5
+yspeed2 = -5
 
 class Spawn_mini_window:
     def wrong_credentials():
@@ -81,8 +86,85 @@ class  AboutTux:
         scrText.insert('insert',tux_text)
         scrText.config(state=DISABLED)
 
+class Boundary:
+    def check_boundary(position, movement):
+        current_x = position[0]
+        current_y = position[1]
+        if movement == "left":
+            if current_x <= 0:
+                can_move = False
+            else:
+                can_move = True
+        if movement == "right":
+            if current_x >= 800:
+                can_move = False
+            else:
+                can_move = True
+        if movement == "up":
+            if current_y <= 0:
+                can_move = False
+            else:
+                can_move = True
+        if movement == "down":
+            if current_y >= 520:
+                can_move = False
+            else:
+                can_move = True
+        return can_move
+
+class Images:
+    def choose_character():
+        characters = ['blue_tux.png', 'sleep_tux.png', 'tux.png']
+        choosen_tux = random.choice(characters)
+        characters.remove(choosen_tux)
+        r_tux = random.choice(characters)
+        characters.remove(r_tux)
+        l_tux = random.choice(characters)
+        print(choosen_tux)
+        print(l_tux)
+        print(r_tux)
+        print("---------------------------------")
+        choosen = Image.open('static/game/'+choosen_tux)
+        image1 = choosen.resize((100,80), Image.ANTIALIAS)
+        img1 = ImageTk.PhotoImage(image1)
+
+        right_tux = Image.open('static/game/'+r_tux)
+        image2 = right_tux.resize((100,80), Image.ANTIALIAS)
+        img2 = ImageTk.PhotoImage(image2)
+
+        left_tux = Image.open('static/game/'+l_tux)
+        image3 = left_tux.resize((100,80), Image.ANTIALIAS)
+        img3 = ImageTk.PhotoImage(image3)
+
+        if choosen_tux == 'sleep_tux.png':
+            background_canvas = 'pink'
+        elif choosen_tux == 'tux.png':
+            background_canvas = 'steelblue'
+        else:
+            background_canvas = 'green'
+
+        return img1, img2, img3, background_canvas
+
+    def laptop():
+        laptopic = Image.open('static/game/laptop.png')
+        laptopic = laptopic.resize((100,80), Image.ANTIALIAS)
+        laptop = ImageTk.PhotoImage(laptopic)
+        return laptop
+    
+    def bed():
+        bedpic = Image.open('static/game/bed.png')
+        bedpic = bedpic.resize((100,80), Image.ANTIALIAS)
+        bed = ImageTk.PhotoImage(bedpic)
+        return bed
+    
+    def food():
+        food2pic = Image.open('static/game/food2.png')
+        food2pic = food2pic.resize((100,80), Image.ANTIALIAS)
+        food = ImageTk.PhotoImage(food2pic)
+        return food
 
 class MainWindow:
+
     def play_game():
         def go_to_text():
             AboutTux.display_info()
@@ -146,72 +228,85 @@ class MainWindow:
         my_canvas.pack(pady=0)
 
         #add image
-        characters = ['blue_tux.png', 'sleep_tux.png', 'tux.png']
-        choosen_tux = random.choice(characters)
-        if choosen_tux == 'sleep_tux.png':
-            my_canvas.config(bg="pink")
-        elif choosen_tux == 'tux.png':
-            my_canvas.config(bg="steelblue")
+        choosen_tux, l_tux, r_tux, background_canvass = Images.choose_character()
+        
+        my_canvas.config(bg=background_canvass)
+        my_character = my_canvas.create_image(x,y, anchor=NW, image=choosen_tux)
+        righthand_tux = my_canvas.create_image(x,y, anchor=NW, image=r_tux)
+        lefthand_tux = my_canvas.create_image(x,y, anchor=NW, image=l_tux)
 
-        image = Image.open('static/game/'+choosen_tux)
-        image = image.resize((100,80), Image.ANTIALIAS)
-        img = ImageTk.PhotoImage(image)
-        my_character = my_canvas.create_image(x,y, anchor=NW, image=img)
-
-        laptopic = Image.open('static/game/laptop.png')
-        laptopic = laptopic.resize((100,80), Image.ANTIALIAS)
-        laptop = ImageTk.PhotoImage(laptopic)
+        #display laptop image
+        laptop = Images.laptop()
         my_laptop = my_canvas.create_image(0,520, anchor=NW, image=laptop)
-
-        bedpic = Image.open('static/game/bed.png')
-        bedpic = bedpic.resize((100,80), Image.ANTIALIAS)
-        bed = ImageTk.PhotoImage(bedpic)
+        #displaying bed image
+        bed = Images.bed()
         my_bed = my_canvas.create_image(800,0, anchor=NW, image=bed)
-
-        food2pic = Image.open('static/game/food2.png')
-        food2pic = food2pic.resize((100,80), Image.ANTIALIAS)
-        food = ImageTk.PhotoImage(food2pic)
+        #displaying food image
+        food = Images.food()
+        print(food)
         my_food = my_canvas.create_image(800,520, anchor=NW, image=food)
 
+        #on-press movements on keybindings
         def left(event):
             pos=my_canvas.coords(my_character)
-            print(pos)
             x = -10
             y = 0
-            if pos[0] <= 0:
-                pass
-            else:
+            can_move = Boundary.check_boundary(pos, 'left')
+            print(can_move)
+            if can_move:
                 my_canvas.move(my_character, x, y)
         
         def right(event):
             pos=my_canvas.coords(my_character)
-            print(pos)
             x = +10
             y = 0
-            if pos[0] >= (w-100):
-                pass
-            else:
+            can_move = Boundary.check_boundary(pos, 'right')
+            print(can_move)
+            if can_move:
                 my_canvas.move(my_character, x, y)
         
         def up(event):
             pos=my_canvas.coords(my_character)
-            print(pos)
             x = 0
             y = -10
-            if pos[1] <= 0:
-                pass
-            else:
+            can_move = Boundary.check_boundary(pos, 'up')
+            print(can_move)
+            if can_move:
                 my_canvas.move(my_character, x, y)
         
         def down(event):
             pos=my_canvas.coords(my_character)
-            print(pos)
             x = 0
             y = +10
-            if pos[1] >= (h-80):
-                pass
-            else:
+            can_move = Boundary.check_boundary(pos, 'down')
+            print(can_move)
+            if can_move:
                 my_canvas.move(my_character, x, y)
+
+
+        def auto_move_right_tux():
+            global xspeed, yspeed
+            my_canvas.move(righthand_tux, xspeed, yspeed)
+            current_x, current_y = my_canvas.coords(righthand_tux)
+            if current_x <= 0 or current_x >= (w-100):
+                xspeed = -xspeed
+            if current_y <= 0 or current_y >= (h-80):
+                yspeed = -yspeed
+            my_canvas.after(30, auto_move_right_tux)
+
+        my_canvas.after(30, auto_move_right_tux)
+
+        def auto_move_left_tux():
+            global xspeed2, yspeed2
+            my_canvas.move(lefthand_tux, xspeed2, yspeed2)
+            current_x, current_y = my_canvas.coords(lefthand_tux)
+            if current_x <= 0 or current_x >= (w-100):
+                xspeed2 = -xspeed2
+            if current_y <= 0 or current_y >= (h-80):
+                yspeed2 = -yspeed2
+            my_canvas.after(30, auto_move_left_tux)
+
+        my_canvas.after(30, auto_move_left_tux)
 
         #keyboard bindings
         def pressing(event):
@@ -219,15 +314,9 @@ class MainWindow:
             if event.char == "q" or event.char == "Q":
                 main_win.destroy()
                 print("exit")
-
-        #limiter
-        pos = my_canvas.coords(my_character, x, y)
-        print(pos)
-
-        #WASD
         main_win.bind("<Key>", pressing)
 
-        #arrow keys
+        #arrow key bindings
         main_win.bind("<Left>", left)
         main_win.bind("<Right>", right)
         main_win.bind("<Up>", up)
