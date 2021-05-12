@@ -1,5 +1,6 @@
 import tkinter
 from tkinter import *
+from tkinter import messagebox
 import tkinter.messagebox as box
 import random
 import time
@@ -11,7 +12,11 @@ from PIL import ImageTk,Image
 from time import sleep
 import threading
 import random
+from tkinter import filedialog
+from tkinter import font
 
+global open_status_name
+open_status_name = False
 xspeed = 5
 yspeed = 5
 xspeed2 = -5
@@ -66,7 +71,7 @@ class Loading:
             self.animated_win.destroy()
             MainWindow.play_game()
 
-class  AboutTux:
+class AboutTux:
     def display_info():
         tux_win = Toplevel()
         tux_win.title("Tux Window")
@@ -85,6 +90,143 @@ class  AboutTux:
             tux_text += line
         scrText.insert('insert',tux_text)
         scrText.config(state=DISABLED)
+
+class TextEditor:
+    def edit_text():
+        editor_win = Toplevel()
+        editor_win.title("Text Editor Window")
+        editor_win.geometry("1200x660")
+
+        #create New file
+        def new_file():
+            #delete old text
+            my_text.delete("1.0", END)
+            editor_win.title("New File - TextPad")
+            #update status bar
+            status_bar.config(text = "New File     ")
+            #reinitialize the value of filename just in case some files are edited and save previously
+            global open_status_name
+            open_status_name = False
+
+        #opn files
+        def open_file():
+            my_text.delete("1.0", END)
+            #grab file name
+            text_file  = filedialog.askopenfilename(
+                initialdir="text_files/",
+                title="Open File",
+                filetypes=(
+                    ("Text Files", "*.txt"),
+                    ("HTML Files", "*.html"),
+                    ("Python Files", "*.py"),
+                    ("All Files", "*.*")
+                )
+            )
+            #check if file already exist
+            if text_file:
+                #make filename global
+                global open_status_name
+                open_status_name = text_file
+
+
+
+            name = text_file
+            status_bar.config(text = f'{name}     ')
+            #get current directory -> C:/Users/chu chu (kung asa nakalocate imong code)
+            cwd = os.getcwd()
+            name = name.replace(cwd+"/text_files/","")
+            editor_win.title(f'{name} - Textpad')
+
+            #open the file
+            text_file = open(text_file, 'r')
+            content = text_file.read()
+            #putting the file content to text box
+            my_text.insert(END, content)
+            #close the opened file
+            text_file.close()
+            
+        #save as file
+        def save_as_file():
+            text_file = filedialog.asksaveasfilename(
+                defaultextension=".*",
+                initialdir="text_files/",
+                title="Save File",
+                filetypes=(
+                    ("Text Files", "*.txt"),
+                    ("HTML Files", "*.html"),
+                    ("Python Files", "*.py"),
+                    ("All Files", "*.*")
+                )
+            )
+            if text_file:
+                name = text_file
+                status_bar.config(text = f'Saved: {name}     ')
+                cwd = os.getcwd()
+                name = name.replace(cwd+"/text_files/","")
+                editor_win.title(f'{name} - Textpad')
+            
+                #save the file
+                text_file = open(text_file, 'w')
+                text_file.write(my_text.get(1.0, END))
+                text_file.close()
+                messagebox.showinfo("Message", "Saved")
+        
+        #save file
+        def save_file():
+            global open_status_name
+            if open_status_name:
+                #save the file
+                text_file = open(open_status_name, 'w')
+                text_file.write(my_text.get(1.0, END))
+                text_file.close()
+                messagebox.showinfo("Message", "Saved")
+                status_bar.config(text = f'Saved: {open_status_name}     ')
+            else:
+                save_as_file()
+
+        
+        #create frame
+        my_frame = Frame(editor_win)
+        my_frame.pack(pady=5)
+
+        #create scrollbar
+        text_scroll = Scrollbar(my_frame)
+        text_scroll.pack(side=RIGHT, fill=Y)
+
+        #create text box
+        my_text = Text(my_frame, width=97, height=25, font=("Helvetica", 16), selectbackground="black", selectforeground="green", undo=True, yscrollcommand=text_scroll.set)
+        my_text.pack()
+
+        #Configure Scrollbar
+        text_scroll.config(command=my_text.yview)
+
+        #create Menu
+        my_menu = Menu(editor_win)
+        editor_win.config(menu=my_menu)
+
+        #add file menu
+        file_menu = Menu(my_menu, tearoff=False)
+        my_menu.add_cascade(label="File", menu=file_menu)
+        file_menu.add_command(label="New", command= new_file)
+        file_menu.add_command(label="Open", command=open_file)
+        file_menu.add_command(label="Save", command=save_file)
+        file_menu.add_command(label="Save As", command=save_as_file)
+        file_menu.add_separator()
+        file_menu.add_command(label="Exit", command=editor_win.destroy)
+
+        # #add edit menu
+        # edit_menu = Menu(my_menu, tearoff=False)
+        # my_menu.add_cascade(label="Edit", menu=edit_menu)
+        # edit_menu.add_command(label="Cut")
+        # edit_menu.add_command(label="Copy")
+        # edit_menu.add_command(label="Undo")
+        # edit_menu.add_command(label="Redo")
+
+        #add status bar
+        status_bar = Label(editor_win, text="Ready     ", anchor=E)
+        status_bar.pack(fill=X, side=BOTTOM, ipady=5)
+
+        editor_win.mainloop()
 
 class Boundary:
     def check_boundary(position, movement):
@@ -166,8 +308,11 @@ class Images:
 class MainWindow:
 
     def play_game():
-        def go_to_text():
+        def got_to_read():
             AboutTux.display_info()
+        
+        def go_to_editor():
+            TextEditor.edit_text()
         
         def go_to_forms():
             run_old()
@@ -186,27 +331,36 @@ class MainWindow:
         canvass.pack(pady=5)
 
         exit_pic = PhotoImage(file='static/src/exit.png')
-        forms_pic = PhotoImage(file='static/src/forms.png')
-        text_pic = PhotoImage(file='static/src/text.png')
+        mini_record_pic = PhotoImage(file='static/src/mini_record.png')
+        read_pic = PhotoImage(file='static/src/read.png')
+        text_editor_pic = PhotoImage(file='static/src/text_editor.png')
 
         btn_frame = Frame(main_win)
         btn_frame.config(bg="grey",width=900, height=40)
 
         btn1 = Button(
         btn_frame,
-        image=text_pic,
+        image=read_pic,
         borderwidth = 0,
-        command=go_to_text,
+        command=got_to_read,
         bg="grey"
         ).place(x=0,y=0)
 
         btn2 = Button(
         btn_frame,
-        image=forms_pic,
+        image=text_editor_pic,
+        borderwidth = 0,
+        command=go_to_editor,
+        bg="grey"
+        ).place(x=275,y=0)
+
+        btn2 = Button(
+        btn_frame,
+        image=mini_record_pic,
         borderwidth = 0,
         command=go_to_forms,
         bg="grey"
-        ).place(x=400,y=0)
+        ).place(x=550,y=0)
 
         btn3 = Button(
         btn_frame,
